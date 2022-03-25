@@ -16,8 +16,8 @@ fun setStateVisibility(view: View, state: Boolean){
 }
 
 @BindingAdapter("isNullText", "newText")
-fun setNullBranch(view: TextView, response: String, newText: String) {
-    if (response == "") view.text = newText else view.text = response
+fun setNullBranch(view: TextView, response: String?, newText: String?) {
+    if (response == "" || response == null) view.text = newText else view.text = response
 }
 
 @BindingAdapter("setBgColor")
@@ -26,7 +26,6 @@ fun setBackgroundColor(view: TextView, conditionText: String?) {
     val grBg : Drawable? = ResourcesCompat.getDrawable(view.context.resources, R.drawable.info_tag_bg_green, null)
     if (conditionText?.contains("Off") == true) {
         view.background = redBg
-    //view.setBackgroundColor(Color.parseColor("#EF6D6D"))
     } else if (conditionText?.contains("On") == true) {
         view.background = grBg
     }

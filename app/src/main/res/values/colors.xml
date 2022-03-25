@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#357C3C</color>
     <color name="red">#EF6D6D</color>
+    <color name="background_color">#B9B9BA</color>
+    <color name="card_bg">#BA379DF1</color>
+    <color name="box_stroe">#BA252525</color>
 </resources>

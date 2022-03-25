@@ -12,64 +12,84 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B9B9BA"
+        android:background="@color/background_color"
         android:orientation="vertical"
-        tools:context=".ui.detail.DetailPageFragment"
         android:padding="10dp"
-        >
+        tools:context=".ui.detail.DetailPageFragment">
+
+        <TextView
+            android:id="@+id/branchName"
+            isNullText="@{viewModel.bankBranch.branch}"
+            newText="@{viewModel.bankBranch.addressName}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="BRANCH NAME" />
 
         <TextView
             android:id="@+id/addressName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:fontFamily="monospace"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
             android:text="@{viewModel.bankBranch.addressName}"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            tools:text="ADRES ADI" />
-
+            android:textColor="@color/black"
+            tools:text="ADDRESS NAME" />
 
         <TextView
             android:id="@+id/regionalCoord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:paddingHorizontal="15dp"
             android:paddingVertical="5dp"
             android:text="@{@string/region(viewModel.bankBranch.regionCoordinator)}"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            tools:text="REGION COORD" />
+            tools:text="Regional Coordinator" />
 
         <TextView
             android:id="@+id/bankCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:gravity="center"
             android:paddingHorizontal="15dp"
             android:paddingVertical="5dp"
             android:text="@{@string/bank_code(viewModel.bankBranch.bankCode)}"
-            tools:text="Banka Kod: S1231231" />
+            android:textColor="@color/black"
+            tools:text="Bank Code: S1231231" />
 
         <TextView
             android:id="@+id/zipCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:paddingHorizontal="15dp"
             android:paddingVertical="5dp"
             android:text="@{@string/zip_code(viewModel.bankBranch.zipCode)}"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            tools:text="Zip: 10392" />
-
-
+            tools:text="Zip Code: 10392" />
 
         <TextView
             android:id="@+id/adress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:paddingHorizontal="15dp"
             android:paddingVertical="5dp"
             android:text="@{@string/adress(viewModel.bankBranch.address)}"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            tools:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+            android:textStyle="bold"
+            tools:text="Test Address Test Address Test Address Test Address" />
 
         <TextView
             android:id="@+id/atms"
@@ -78,7 +98,11 @@
             android:paddingHorizontal="15dp"
             android:paddingVertical="5dp"
             android:text="@{@string/nearest_atm(viewModel.bankBranch.nearestATM)}"
-            tools:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+            android:textColor="@color/black"
+            tools:text="Nearest ATM Nearest ATM Nearest ATM Nearest ATM"
+            android:fontFamily="monospace"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,11 +117,12 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/info_tag_bg_green"
                 android:backgroundTint="@color/green"
+                android:fontFamily="monospace"
                 android:padding="8dp"
                 android:text="@{viewModel.bankBranch.type}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                tools:text="Para Çek Yatır" />
+                tools:text="Withdraw Deposit" />
 
             <TextView
                 setBgColor="@{viewModel.bankBranch.onOffLine}"
@@ -105,11 +130,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/info_tag_bg_green"
+                android:fontFamily="monospace"
                 android:padding="8dp"
                 android:text="@{viewModel.bankBranch.onOffLine}"
+                android:textColor="@color/white"
                 android:textSize="12sp"
-                tools:text="On Line"
-                android:textColor="@color/white"/>
+                tools:text="On Line" />
 
             <TextView
                 setBgColor="@{viewModel.bankBranch.onOffSite}"
@@ -117,11 +143,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/info_tag_bg_green"
+                android:fontFamily="monospace"
                 android:padding="8dp"
                 android:text="@{viewModel.bankBranch.onOffSite}"
+                android:textColor="@color/white"
                 android:textSize="12sp"
-                tools:text="On Line"
-                android:textColor="@color/white"/>
+                tools:text="On Site" />
         </LinearLayout>
 
         <Button
@@ -129,9 +156,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-            android:text="Şubeye Git"
-            android:backgroundTint="#BA379DF1"
-            />
+            android:backgroundTint="@color/card_bg"
+            android:fontFamily="monospace"
+            android:text="@string/navitage_to_branch" />
 
     </LinearLayout>
 </layout>

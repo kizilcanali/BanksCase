@@ -1,14 +1,16 @@
 package com.alikizilcan.bankscase.ui.home
 
-
+import android.content.Context
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.alikizilcan.bankscase.R
 import com.alikizilcan.bankscase.domain.BankBranchesUseCase
 import com.alikizilcan.bankscase.domain.model.BankBranch
-import com.alikizilcan.bankscase.infra.NetworkConnectionLiveData
 import com.alikizilcan.bankscase.infra.Resource
 import com.alikizilcan.bankscase.infra.bases.BaseViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -27,13 +29,11 @@ class HomePageViewModel @Inject constructor(private val bankBranchesUseCase: Ban
     private val _errorState: MutableLiveData<Boolean> = MutableLiveData()
     val errorState: LiveData<Boolean> = _errorState
 
-    private val _hasNoResult: MutableLiveData<Boolean> = MutableLiveData()
-    val hasNoResult: LiveData<Boolean> = _hasNoResult
+    val hasNoResult: MutableLiveData<Boolean> = MutableLiveData()
+
 
     var cityNames: MutableLiveData<MutableSet<String>> = MutableLiveData()
     var searchCityText: MutableLiveData<String> = MutableLiveData()
-
-
 
     init {
         getBankBranches()
@@ -53,14 +53,15 @@ class HomePageViewModel @Inject constructor(private val bankBranchesUseCase: Ban
                         _bankBranchesList.value = resource.data!!
                         _isLoading.value = false
                         _errorState.value = false
-
+                        hasNoResult.value = false
                     }
                     is Resource.Error -> {
                         _isLoading.value = false
-                        _hasNoResult.value = true
+                        hasNoResult.value = true
                     }
                     is Resource.Loading -> {
                         _isLoading.value = true
+                        hasNoResult.value = false
                     }
                 }
             }
@@ -70,10 +71,8 @@ class HomePageViewModel @Inject constructor(private val bankBranchesUseCase: Ban
 
     fun getBankBranchesByCity() {
         viewModelScope.launch {
-            searchCityText.value?.let {
-                bankBranchesUseCase.getBranchesByCity(it).collect { response ->
-                    _bankBranchesList.value = response
-                }
+            bankBranchesUseCase.getBranchesByCity(searchCityText.value!!).collect { response ->
+                _bankBranchesList.value = response
             }
         }
     }
@@ -86,5 +85,14 @@ class HomePageViewModel @Inject constructor(private val bankBranchesUseCase: Ban
         }
     }
 
-    fun checkInternetConncetion(){}
+
+    fun setupSnackbar(view: View, context: Context): Snackbar {
+        val snackbar = Snackbar.make(
+            view,
+            context.getString(R.string.no_internet_connection),
+            Snackbar.LENGTH_INDEFINITE
+        )
+        snackbar.setBackgroundTint(context.getColor(R.color.red))
+        return snackbar
+    }
 }

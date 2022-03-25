@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:cardBackgroundColor="#BA379DF1"
+            app:cardBackgroundColor="@color/card_bg"
             >
 
             <LinearLayout
@@ -46,11 +46,12 @@
                         android:maxLines="2"
                         android:text="@{baseModel.addressName}"
                         android:textAlignment="center"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         tools:text="HAVRAN ŞUBESİ/BALIKESİR"
                         android:textColor="@color/white"
                         android:paddingHorizontal="5dp"
+                        android:fontFamily="monospace"
                         />
                 </LinearLayout>
 
@@ -58,7 +59,7 @@
                     android:id="@+id/branchInfoLayout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.5"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
                     android:paddingHorizontal="3dp"
@@ -72,7 +73,8 @@
                         android:textSize="12sp"
                         tools:text="HAVRAN"
                         android:layout_marginBottom="5dp"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="monospace"/>
 
                     <TextView
                         android:id="@+id/branchAddress"
@@ -83,6 +85,7 @@
                         android:textSize="12sp"
                         android:layout_marginBottom="5dp"
                         android:textColor="@color/white"
+                        android:fontFamily="monospace"
                         />
 
                     <LinearLayout
@@ -96,11 +99,12 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/info_tag_bg_green"
                             android:paddingVertical="5dp"
-                            android:paddingHorizontal="10dp"
+                            android:paddingHorizontal="5dp"
                             android:text="@{baseModel.type}"
                             android:textColor="@color/white"
                             android:textSize="12sp"
-                            tools:text="Para Çek Yatır" />
+                            tools:text="Para Çek Yatır"
+                            android:fontFamily="monospace"/>
 
                         <TextView
                             setBgColor="@{baseModel.onOffLine}"
@@ -113,7 +117,8 @@
                             android:textSize="12sp"
                             tools:text="On Line"
                             android:paddingVertical="5dp"
-                            android:paddingHorizontal="10dp"/>
+                            android:paddingHorizontal="5dp"
+                            android:fontFamily="monospace"/>
 
                         <TextView
                             setBgColor="@{baseModel.onOffSite}"
@@ -126,7 +131,8 @@
                             android:textSize="12sp"
                             tools:text="Off Site"
                             android:paddingVertical="5dp"
-                            android:paddingHorizontal="10dp"/>
+                            android:paddingHorizontal="5dp"
+                            android:fontFamily="monospace"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

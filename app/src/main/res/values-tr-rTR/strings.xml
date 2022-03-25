@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Şubeler</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="result_not_found">Sonuç Bulunamadı!</string>
+    <string name="no_internet_connection">İnternet Bağlantısı Yok!</string>
+    <string name="bank_code">Banka Kodu: %s</string>
+    <string name="region">Bölge Koordinatörlüğü: %s</string>
+    <string name="zip_code">Posta Kodu: %s</string>
+    <string name="adress">Adres: \n%s</string>
+    <string name="nearest_atm">En Yakın ATM: \n%s</string>
+    <string name="navitage_to_branch">Şubeye Git</string>
+    <string name="detail_title">Şube Detayları</string>
+    <string name="whole_cities">Tümü</string>
+</resources>

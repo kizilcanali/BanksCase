@@ -8,18 +8,25 @@
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.alikizilcan.bankscase.ui.home.HomePageFragment"
-        android:label="HomePageFragment" >
+        android:label="@string/app_name" >
         <action
             android:id="@+id/action_homePageFragment_to_detailPageFragment"
-            app:destination="@id/detailPageFragment" />
+            app:destination="@id/detailPageFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/detailPageFragment"
         android:name="com.alikizilcan.bankscase.ui.detail.DetailPageFragment"
-        android:label="DetailPageFragment" >
+        android:label="@string/detail_title" >
         <argument
             android:name="branchId"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_detailPageFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
     </fragment>
 </navigation>

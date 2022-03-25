@@ -19,7 +19,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailPageFragment : BaseFragment() {
 
     override val viewModel: DetailPageViewModel by viewModels()
+
     private lateinit var firebaseAnalytics: FirebaseAnalytics
+
     private var _binding: FragmentDetailBinding? = null
     val binding get() = _binding!!
 
@@ -71,4 +73,5 @@ class DetailPageFragment : BaseFragment() {
             startActivity(mapIntent)
         }
     }
+
 }

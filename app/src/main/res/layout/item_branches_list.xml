@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="baseModel"
+            type="com.alikizilcan.bankscase.domain.model.BankBranch" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/branchesCard"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardBackgroundColor="#BA379DF1"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/mainInfoLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bankBranchName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="@{baseModel.addressName}"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="HAVRAN ŞUBESİ/BALIKESİR"
+                        android:textColor="@color/white"
+                        android:paddingHorizontal="5dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/branchInfoLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="3dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/bankDistrictName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{baseModel.district}"
+                        android:textSize="12sp"
+                        tools:text="HAVRAN"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/branchAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{baseModel.address}"
+                        tools:text="Türlübaş Mah.Atatürk Cad.No:272 Ceyhan/ADANA 01960"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/white"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/info_tag_bg_green"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:text="@{baseModel.type}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            tools:text="Para Çek Yatır" />
+
+                        <TextView
+                            setBgColor="@{baseModel.onOffLine}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:background="@drawable/info_tag_bg_green"
+                            android:text="@{baseModel.onOffLine}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            tools:text="On Line"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"/>
+
+                        <TextView
+                            setBgColor="@{baseModel.onOffSite}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:background="@drawable/info_tag_bg_green"
+                            android:text="@{baseModel.onOffSite}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            tools:text="Off Site"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

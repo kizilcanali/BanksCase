@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.alikizilcan.bankscase.ui.detail.DetailPageViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B9B9BA"
+        android:orientation="vertical"
+        tools:context=".ui.detail.DetailPageFragment"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/addressName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@{viewModel.bankBranch.addressName}"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:text="ADRES ADI" />
+
+
+        <TextView
+            android:id="@+id/regionalCoord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:text="@{@string/region(viewModel.bankBranch.regionCoordinator)}"
+            android:textSize="14sp"
+            tools:text="REGION COORD" />
+
+        <TextView
+            android:id="@+id/bankCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:text="@{@string/bank_code(viewModel.bankBranch.bankCode)}"
+            tools:text="Banka Kod: S1231231" />
+
+        <TextView
+            android:id="@+id/zipCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:text="@{@string/zip_code(viewModel.bankBranch.zipCode)}"
+            android:textSize="14sp"
+            tools:text="Zip: 10392" />
+
+
+
+        <TextView
+            android:id="@+id/adress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:text="@{@string/adress(viewModel.bankBranch.address)}"
+            android:textSize="18sp"
+            tools:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+
+        <TextView
+            android:id="@+id/atms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:text="@{@string/nearest_atm(viewModel.bankBranch.nearestATM)}"
+            tools:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_tag_bg_green"
+                android:backgroundTint="@color/green"
+                android:padding="8dp"
+                android:text="@{viewModel.bankBranch.type}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:text="Para Çek Yatır" />
+
+            <TextView
+                setBgColor="@{viewModel.bankBranch.onOffLine}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/info_tag_bg_green"
+                android:padding="8dp"
+                android:text="@{viewModel.bankBranch.onOffLine}"
+                android:textSize="12sp"
+                tools:text="On Line"
+                android:textColor="@color/white"/>
+
+            <TextView
+                setBgColor="@{viewModel.bankBranch.onOffSite}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/info_tag_bg_green"
+                android:padding="8dp"
+                android:text="@{viewModel.bankBranch.onOffSite}"
+                android:textSize="12sp"
+                tools:text="On Line"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/navigateBranchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:text="Şubeye Git"
+            android:backgroundTint="#BA379DF1"
+            />
+
+    </LinearLayout>
+</layout>

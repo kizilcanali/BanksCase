@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "665731351779",
+    "project_id": "bankscase",
+    "storage_bucket": "bankscase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665731351779:android:03fd214896d583b708b1d6",
+        "android_client_info": {
+          "package_name": "com.alikizilcan.bankscase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665731351779-s0n4utiek4s4tt0e8i2s0tee603oqnjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBME0bP6c44E6CW1CBRqe6_RiKGtyQ-Xow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665731351779-s0n4utiek4s4tt0e8i2s0tee603oqnjd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

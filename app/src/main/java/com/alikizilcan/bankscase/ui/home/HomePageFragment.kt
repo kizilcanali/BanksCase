@@ -8,10 +8,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.alikizilcan.bankscase.MainActivityViewModel
+import com.alikizilcan.bankscase.R
 import com.alikizilcan.bankscase.databinding.FragmentHomePageBinding
 import com.alikizilcan.bankscase.infra.bases.BaseFragment
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class HomePageFragment : BaseFragment() {
@@ -40,7 +41,7 @@ class HomePageFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val snack = viewModel.setupSnackbar(view, requireContext())
+        val snack = setupSnackbar(view)
 
         binding.branchesRecyclerView.adapter = bankBranchesListAdapter
 
@@ -59,16 +60,12 @@ class HomePageFragment : BaseFragment() {
         }
 
         binding.refreshLayout.setOnRefreshListener {
-            refresh()
+            viewModel.refresh()
+            binding.refreshLayout.isRefreshing = false
         }
 
         activityViewModel.isConnectionAvailable.observe(viewLifecycleOwner) { isConnected ->
-            if (isConnected == false) {
-                snack.show()
-            } else if (isConnected) {
-                snack.dismiss()
-                viewModel.hasNoResult.value = false
-            }
+            dependConnectionUISetup(isConnected, snack)
             binding.branchesRecyclerView.isVisible = isConnected
         }
 
@@ -79,14 +76,23 @@ class HomePageFragment : BaseFragment() {
         bankBranchesListAdapter.itemClickListener = viewModel.itemClickListener
     }
 
-    private fun refresh() {
-        runBlocking {
-            if (viewModel.searchCityText.value == null) {
-                viewModel.getBankBranches()
-            } else {
-                viewModel.getBankBranchesByCity()
-            }
+
+
+    private fun dependConnectionUISetup(bool: Boolean, snackbar: Snackbar){
+        if(!bool){
+            snackbar.show()
+        }else{
+            snackbar.dismiss()
         }
-        binding.refreshLayout.isRefreshing = false
+    }
+
+    private fun setupSnackbar(view: View): Snackbar {
+        val snackbar = Snackbar.make(
+            view,
+            requireContext().getString(R.string.no_internet_connection),
+            Snackbar.LENGTH_INDEFINITE
+        )
+        snackbar.setBackgroundTint(requireContext().getColor(R.color.red))
+        return snackbar
     }
 }

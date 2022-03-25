@@ -1,19 +1,16 @@
 package com.alikizilcan.bankscase.ui.home
 
-import android.content.Context
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.alikizilcan.bankscase.R
 import com.alikizilcan.bankscase.domain.BankBranchesUseCase
 import com.alikizilcan.bankscase.domain.model.BankBranch
 import com.alikizilcan.bankscase.infra.Resource
 import com.alikizilcan.bankscase.infra.bases.BaseViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
@@ -85,14 +82,14 @@ class HomePageViewModel @Inject constructor(private val bankBranchesUseCase: Ban
         }
     }
 
-
-    fun setupSnackbar(view: View, context: Context): Snackbar {
-        val snackbar = Snackbar.make(
-            view,
-            context.getString(R.string.no_internet_connection),
-            Snackbar.LENGTH_INDEFINITE
-        )
-        snackbar.setBackgroundTint(context.getColor(R.color.red))
-        return snackbar
+    fun refresh() {
+        runBlocking {
+            if (searchCityText.value == null) {
+                getBankBranches()
+            } else {
+                getBankBranchesByCity()
+            }
+        }
+        hasNoResult.value = false
     }
 }
